@@ -1,0 +1,12 @@
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: lightgoldenrodyellow;
+}
+
+img {
+    height: 500px;
+    width: 500px;
+    float: left;
+    margin-left: 50px;
+    margin-top: 50px;
+}
