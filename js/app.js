@@ -1,9 +1,7 @@
 'use strict';
 console.log('app js connected');
 
-let totalClicks = 0;
-const allProducts = [];
-let preImgSeen = [];
+
 
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
 
@@ -12,27 +10,6 @@ let preImgSeen = [];
 // File path of image
 // Times the image has been shown
 // Create an algorithm that will randomly generate three unique product images from the images directory and display them side-by-side-by-side in the browser window.
-
-const ProductPicture = function(name, imageSrc, clicks, timesShown){
-  this.name =name;
-  this.imageSrc = imageSrc;
-  if(clicks){
-    this.clicks = clicks;
-  } else {
-    this.clicks = 0;
-  }
-  if(timesShown){
-    this.timesShown = timesShown;
-  } else {
-    this.timesShown = 0;
-  }
-  allProducts.push(this);
-};
-
-this.clicks = 0;
-this.timesShown = 0;
-allProducts.push(this);
-
 // For each of the three images, increment its property of times it has been shown by one.
 
 // Attach an event listener to the section of the HTML page where the images are going to be displayed.
