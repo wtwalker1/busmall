@@ -1,6 +1,33 @@
 'use strict';
 console.log('app js connected');
 
+let allImagesTag = document.getElementById('all_images');
+let leftImageTag = document.getElementById('left_image');
+let middleImageTag = document.getElementById('middle_image');
+let rightImageTag = document.getElementById('right_image');
+
+let totalClicks = 0;
+
+let leftImageOnPage = null;
+let rightImageOnPage = null;
+
+const ProductPicture = function(name, imageSrc, clicks, timeShown){
+  this.name = name;
+  this.imageSrc = imageSrc;
+  this.clicks = 0;
+  this.timesShown = 0;
+  ProductPicture.allImages.push(this);
+};
+ProductPicture.allImages = [];
+
+const renderNewProducts = function(leftIndex, middleIndex, rightIndex){
+  leftImageTag.src = ProductPicture.allImages[leftIndex].imageSrc;
+  middleImageTag.src = ProductPicture.allImages[middleIndex].imageSrc;
+  rightImageTag.src = ProductPicture.allImages[rightIndex].imageSrc;
+};
+
+
+
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
 
 // Create a constructor function that creates an object associated with each product, and has the following properties:
