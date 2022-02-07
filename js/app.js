@@ -1,9 +1,114 @@
 'use strict';
 console.log('app js connected');
 
+let allImagesTag = document.getElementById('all_images');
+let leftImageTag = document.getElementById('left_image');
+let middleImageTag = document.getElementById('middle_image');
+let rightImageTag = document.getElementById('right_image');
+
 let totalClicks = 0;
-const allProducts = [];
-let preImgSeen = [];
+
+let leftImageOnPage = null;
+let middleImageOnPage = null;
+let rightImageOnPage = null;
+
+const ProductPicture = function(name, imageSrc, clicks, timeShown){
+  this.name = name;
+  this.imageSrc = imageSrc;
+  this.clicks = 0;
+  this.timesShown = 0;
+  ProductPicture.allImages.push(this);
+};
+ProductPicture.allImages = [];
+
+const renderNewProducts = function(leftIndex, middleIndex, rightIndex){
+  leftImageTag.src = ProductPicture.allImages[leftIndex].imageSrc;
+  middleImageTag.src = ProductPicture.allImages[middleIndex].imageSrc;
+  rightImageTag.src = ProductPicture.allImages[rightIndex].imageSrc;
+};
+
+const pickNewProducts = function() {
+  const leftIndex = Math.floor(Math.random() * ProductPicture.allImages.length);
+  console.log('left index for left image', leftIndex);
+
+  let leftIndex;
+  do {
+      leftIndex = Math.floor(Math.random() * ProductPicture.allImages.length)
+  } while (rightIndex === leftIndex);
+  console.log(ProductPicture.allImages[leftIndex].name + ' and ' + ProductPicture.allImages[middleIndex] + ' and ' + ProductPicture.allImages[rightIndex].name);
+
+
+  leftImageOnPage = ProductPicture.allImages[leftIndex];
+  middleImageOnPage = ProductPicture.allImages[middleIndex];
+  rightImageOnPage = ProductPicture.allImages[rightIndex];
+
+  renderNewProducts(leftIndex, middleIndex, rightIndex);
+
+};
+
+
+const handleClickOnProduct = function(event) {
+    console.log('clicking on the picture', event.target);
+
+    if (totalClicks < 25) {
+        const thingWeClickedOn = event.target;
+        const id = thingWeClickedOn.id;
+
+        if (id === 'left_image') || id === 'middle_image' || id === 'right_image') {
+        if (id === 'left_image') {
+            leftImageOnPage.click++;
+        }
+        if (id === 'middle_image') {
+            middleImageOnPage.clicks++;
+        }
+        if (id === 'right_image') {
+            rightImageOnPage.clicks++;
+        }
+
+        leftImageOnPage.timesShown++;
+        middleImageOnPage.timesShown++;
+        rightImageOnPage.timesShown++;
+
+        pickNewProducts();
+    }
+  }
+
+  totalClicks++;
+  console.log(totalClicks);
+  if (totalClicks === 5) {
+    allImagesTag.removeEventListener('click', handleClickOnProduct);
+  }
+};
+
+
+allImagesTag.addEventListener('click', handleClickOnProduct);
+
+
+new ProductPicture('R2D2 Suitcase', 'assets/bag.jpeg');
+new ProductPicture('Banana Slicer', 'assets/banana.jpeg');
+new ProductPicture('Ipad Toilet Paper Holder', 'assets/bathroom.jpeg');
+new ProductPicture('Open Toe Rain Boots', 'assets/boots.jpeg');
+new ProductPicture('Ultimate Breakfast Maker', 'assets/breakfast.jpeg');
+new ProductPicture('Meatball Bubblegum', 'assets/bubblegum.jpeg');
+new ProductPicture('Abstract Chair', 'assets/chair.jpeg');
+new ProductPicture('Cthulhu Action Figure', 'assets/cthulhu.jpeg');
+new ProductPicture('Dog Ducklips', 'assets/dog-duck.jpeg');
+new ProductPicture('Dragon Meat', 'assets/dragon.jpeg');
+new ProductPicture('Utensil Pen Caps', 'assets/pen.jpeg');
+new ProductPicture('Pet Sweep', 'assets/pet-sweet.jpeg');
+new ProductPicture('Pizza Scissors', 'assets/scissors.jpeg');
+new ProductPicture('Shark Sleeping Bag', 'assets/shark.jpeg');
+new ProductPicture('Baby Sweeper Onesie', 'assets/sweep.png');
+new ProductPicture('Taun Taun Sleeping Pad', 'assets/tauntaun.jpeg');
+new ProductPicture('Unicorn Meat', 'assets/unicorn.jpeg');
+new ProductPicture('Infinite Water Can', 'assets/water-can.jpeg');
+new ProductPicture('Wine Glass', 'assets/wine-glass');
+
+leftImageOnPage = ProductPicture.allImages[0];
+middleImageOnPage = ProductPicture.allImages[1];
+rightImageOnPage = ProductPicture.allImages[2];
+
+pickNewProducts();
 
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
 
@@ -12,27 +117,6 @@ let preImgSeen = [];
 // File path of image
 // Times the image has been shown
 // Create an algorithm that will randomly generate three unique product images from the images directory and display them side-by-side-by-side in the browser window.
-
-const ProductPicture = function(name, imageSrc, clicks, timesShown){
-  this.name =name;
-  this.imageSrc = imageSrc;
-  if(clicks){
-    this.clicks = clicks;
-  } else {
-    this.clicks = 0;
-  }
-  if(timesShown){
-    this.timesShown = timesShown;
-  } else {
-    this.timesShown = 0;
-  }
-  allProducts.push(this);
-};
-
-this.clicks = 0;
-this.timesShown = 0;
-allProducts.push(this);
-
 // For each of the three images, increment its property of times it has been shown by one.
 
 // Attach an event listener to the section of the HTML page where the images are going to be displayed.
