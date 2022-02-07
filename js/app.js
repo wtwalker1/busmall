@@ -47,7 +47,44 @@ const pickNewProducts = function() {
 };
 
 
+const handleClickOnProduct = function(event) {
+    console.log('clicking on the picture', event.target);
 
+    if (totalClicks < 25) {
+        const thingWeClickedOn = event.target;
+        const id = thingWeClickedOn.id;
+
+        if (id === 'left_image') || id === 'middle_image' || id === 'right_image') {
+        if (id === 'left_image') {
+            leftImageOnPage.click++;
+        }
+        if (id === 'middle_image') {
+            middleImageOnPage.clicks++;
+        }
+        if (id === 'right_image') {
+            rightImageOnPage.clicks++;
+        }
+
+        leftImageOnPage.timesShown++;
+        middleImageOnPage.timesShown++;
+        rightImageOnPage.timesShown++;
+
+        pickNewProducts();
+    }
+  }
+
+  totalClicks++;
+  console.log(totalClicks);
+  if (totalClicks === 5) {
+    allImagesTag.removeEventListener('click', handleClickOnProduct);
+  }
+};
+
+
+allImagesTag.addEventListener('click', handleClickOnProduct);
+
+
+new ProductPicture()
 
 
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
