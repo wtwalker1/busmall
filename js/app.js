@@ -9,6 +9,7 @@ let rightImageTag = document.getElementById('right_image');
 let totalClicks = 0;
 
 let leftImageOnPage = null;
+let middleImageOnPage = null;
 let rightImageOnPage = null;
 
 const ProductPicture = function(name, imageSrc, clicks, timeShown){
@@ -25,6 +26,27 @@ const renderNewProducts = function(leftIndex, middleIndex, rightIndex){
   middleImageTag.src = ProductPicture.allImages[middleIndex].imageSrc;
   rightImageTag.src = ProductPicture.allImages[rightIndex].imageSrc;
 };
+
+const pickNewProducts = function() {
+  const leftIndex = Math.floor(Math.random() * ProductPicture.allImages.length);
+  console.log('left index for left image', leftIndex);
+
+  let leftIndex;
+  do {
+      leftIndex = Math.floor(Math.random() * ProductPicture.allImages.length)
+  } while (rightIndex === leftIndex);
+  console.log(ProductPicture.allImages[leftIndex].name + ' and ' + ProductPicture.allImages[middleIndex] + ' and ' + ProductPicture.allImages[rightIndex].name);
+
+
+  leftImageOnPage = ProductPicture.allImages[leftIndex];
+  middleImageOnPage = ProductPicture.allImages[middleIndex];
+  rightImageOnPage = ProductPicture.allImages[rightIndex];
+
+  renderNewProducts(leftIndex, middleIndex, rightIndex);
+
+};
+
+
 
 
 
