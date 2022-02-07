@@ -84,8 +84,31 @@ const handleClickOnProduct = function(event) {
 allImagesTag.addEventListener('click', handleClickOnProduct);
 
 
-new ProductPicture()
+new ProductPicture('R2D2 Suitcase', 'assets/bag.jpeg');
+new ProductPicture('Banana Slicer', 'assets/banana.jpeg');
+new ProductPicture('Ipad Toilet Paper Holder', 'assets/bathroom.jpeg');
+new ProductPicture('Open Toe Rain Boots', 'assets/boots.jpeg');
+new ProductPicture('Ultimate Breakfast Maker', 'assets/breakfast.jpeg');
+new ProductPicture('Meatball Bubblegum', 'assets/bubblegum.jpeg');
+new ProductPicture('Abstract Chair', 'assets/chair.jpeg');
+new ProductPicture('Cthulhu Action Figure', 'assets/cthulhu.jpeg');
+new ProductPicture('Dog Ducklips', 'assets/dog-duck.jpeg');
+new ProductPicture('Dragon Meat', 'assets/dragon.jpeg');
+new ProductPicture('Utensil Pen Caps', 'assets/pen.jpeg');
+new ProductPicture('Pet Sweep', 'assets/pet-sweet.jpeg');
+new ProductPicture('Pizza Scissors', 'assets/scissors.jpeg');
+new ProductPicture('Shark Sleeping Bag', 'assets/shark.jpeg');
+new ProductPicture('Baby Sweeper Onesie', 'assets/sweep.png');
+new ProductPicture('Taun Taun Sleeping Pad', 'assets/tauntaun.jpeg');
+new ProductPicture('Unicorn Meat', 'assets/unicorn.jpeg');
+new ProductPicture('Infinite Water Can', 'assets/water-can.jpeg');
+new ProductPicture('Wine Glass', 'assets/wine-glass');
 
+leftImageOnPage = ProductPicture.allImages[0];
+middleImageOnPage = ProductPicture.allImages[1];
+rightImageOnPage = ProductPicture.allImages[2];
+
+pickNewProducts();
 
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
 
